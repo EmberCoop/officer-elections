@@ -1,8 +1,8 @@
 name: Record Officer Election
 "on":
   workflow_dispatch:
-  schedule:
-    - cron: "30 19 * * *"
+  # schedule:
+  #   - cron: "30 19 * * *" TODO: uncomment when ready
 jobs:
   record_election:
     runs-on: ubuntu-latest

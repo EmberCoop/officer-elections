@@ -1,8 +1,9 @@
-from random import sample
-import requests
-import os
 import csv
+import os
+import random
 from datetime import date
+
+import requests
 
 members = [
     'Brian',
@@ -20,12 +21,12 @@ data = {
     "text": "A new officer election has been recorded!\n&nbsp;\n### Results:",
 }
 
-selected_members = sample(members, len(roles))
+random.shuffle(members)
 
-print(f'Results: {selected_members}')
+print(f'Results: {members}')
 
 for i in range(len(roles)):
-    data['text'] += f'\n* **{roles[i]}**: {selected_members[i]}'
+    data['text'] += f'\n* **{roles[i]}**: {members[i]}'
 
 today = date.today()
 year = today.year
@@ -44,6 +45,6 @@ with open(file_path, 'a+') as csv_file:
     if write_header:
         csv_writer.writerow(['Date'] + roles)
 
-    csv_writer.writerow([today.isoformat()] + selected_members)
+    csv_writer.writerow([today.isoformat()] + members)
 
 requests.post(url=os.getenv("WEBHOOK_URL"), data=data)
