@@ -6,9 +6,9 @@ from datetime import date
 import requests
 
 members = [
-    'Brian',
-    'Mags',
-    'Sara'
+    'Brian Clark',
+    'Sara Clark',
+    'Mags Magnoli'
 ]
 
 roles = [
